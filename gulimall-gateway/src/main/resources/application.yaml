@@ -7,13 +7,17 @@ spring:
         server-addr: 127.0.0.1:8848
     gateway:
       routes:
-        - id: baidu-route
-          uri: https://www.taobao.com
+#        - id: baidu-route
+#          uri: https://www.taobao.com
+#          predicates:
+#            - Query=url,taobao
+#        - id: qq-route
+#          uri: https://www.qq.com
+#          predicates:
+#            - Query=url,qq
+        - id: guli-mall-route
+          uri: lb://gulimall-coupon
           predicates:
-            - Query=url,taobao
-        - id: qq-route
-          uri: https://www.qq.com
-          predicates:
-            - Query=url,qq
+            - Method=GET,POST
 server:
   port: 88
